@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Navbar() {
@@ -18,15 +19,15 @@ function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center space-x-1">
-            <a href="" className="py-5 px-3">
+            <Link href="/login" className="py-5 px-3">
               Login
-            </a>
-            <a
+            </Link>
+            <Link
               href=""
               className="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300"
             >
               Download
-            </a>
+            </Link>
           </div>
         </div>
       </div>

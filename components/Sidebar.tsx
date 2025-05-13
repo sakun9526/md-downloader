@@ -24,11 +24,13 @@ const Sidebar = () => {
         className={`fixed inset-y-0 left-0 w-64 bg-black opacity-85 text-white z-50 transform transition-transform duration-300 ease-in-out
           ${
             isOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 md:static md:block md:h-screen`}
+          } md:translate-x-0 md:static md:block md:min-h-screen`}
       >
         <div className="h-full p-4 space-y-4">
           <h2 className="text-2xl font-bold mb-4 border-b border-black-500 pb-2">
+          <Link href="/" className="block hover:bg-black rounded px-2 py-1">
             MD Downloader
+          </Link>
           </h2>
           <nav className="space-y-2">
             <Link href="/" className="block hover:bg-black rounded px-2 py-1">
