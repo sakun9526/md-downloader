@@ -1,37 +1,57 @@
 "use client";
-import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("")
   const router = useRouter();
 
-  const handleLogin = async (e: { preventDefault: () => void; }) => {
+  async function handleSubmit(e: any) {
     e.preventDefault();
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
+    const res = await fetch("/api/auth/signup", {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password
+      }),
     });
 
-    if (res && res.ok) {
-      router.push("/");
+    if (res.ok) {
+      router.push("/login");
     } else {
-      alert("Login failed");
+      alert("Signup failed");
     }
-  };
+  }
+
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Welcome Back
+          Create an Account
         </h2>
 
-        <form onSubmit={handleLogin} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="John Doe"
+              required
+              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+
           <div>
             <label
               htmlFor="email"
@@ -72,16 +92,9 @@ export default function Login() {
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-200"
           >
-            Login
+            Sign up
           </button>
         </form>
-
-        <p className="mt-4 text-center text-sm text-gray-600">
-          Don't have an account?{" "}
-          <Link href="/signup" className="text-indigo-600 hover:underline">
-            Sign up
-          </Link>
-        </p>
       </div>
     </div>
   );

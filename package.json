@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@uiw/react-markdown-editor": "^6.1.4",
+    "bcryptjs": "^3.0.2",
+    "mongoose": "^8.14.2",
     "next": "15.3.2",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
