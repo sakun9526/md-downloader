@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import markdownSample from "@/utils/markdownSample";
 
 type MarkdownState = {
   value: string;
@@ -6,6 +7,6 @@ type MarkdownState = {
 };
 
 export const useMarkdownStore = create<MarkdownState>((set) => ({
-  value: `# This is a H1  \n## This is a H2  \n###### This is a H6`,
+  value: markdownSample,
   setValue: (value: string) => set((state) => ({ value: value })),
 }));
