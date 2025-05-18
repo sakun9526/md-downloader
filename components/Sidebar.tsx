@@ -1,12 +1,13 @@
 "use client";
 
-// components/Sidebar.js
 import { useState } from 'react';
 import Link from 'next/link';
 import {MenuIcon, CloseIcon} from '@/icons/index'
+import { useMarkdownStore } from "@/store/useMarkdownStore";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const fileName = useMarkdownStore((state) => state.fileName)
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -34,7 +35,7 @@ const Sidebar = () => {
           </h2>
           <nav className="space-y-2">
             <Link href="/" className="block hover:bg-black rounded px-2 py-1">
-              Previously saved work
+              {fileName}
             </Link>
           </nav>
         </div>
