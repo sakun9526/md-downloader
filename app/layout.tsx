@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
+import SessionWrapper from "@/components/SessionWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,15 +31,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <div className="min-h-screen flex">
-          <Sidebar />
-          <main className="flex-1">
-            <Navbar />
-            <div className="p-4">
-              {children}
-            </div>
-          </main>
-        </div>
+        <SessionWrapper>
+          <div className="min-h-screen flex">
+            <Sidebar />
+            <main className="flex-1">
+              <Navbar />
+              <div className="p-4">{children}</div>
+            </main>
+          </div>
+        </SessionWrapper>
       </body>
     </html>
   );

@@ -13,6 +13,7 @@ export default function Signup() {
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify({
+        name,
         email,
         password
       }),
