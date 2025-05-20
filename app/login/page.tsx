@@ -9,6 +9,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
+  //handle login
   const handleLogin = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     const res = await signIn("credentials", {
